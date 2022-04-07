@@ -23,51 +23,60 @@ const Detail = (props) => {
     return null;
   }
   return (
-    <Container>
-      <div>
-        <img src={post.user_info.user_profile}></img>
-        <h3>{post.user_info.user_name}</h3>
-        <span>{post.insert_dt}</span>
-      </div>
-      <div>
-        <span>{post.contents}</span>
-        <img src={post.image_url}></img>
-      </div>
-      <div>
-        <span>좋아요 10개</span>
-        <span>댓글 {post.comment_cnt}개</span>
-      </div>
+    <div>
+      <Container>
+        <Userdiv>
+          <img src={post.user_info.user_profile}></img>
+          <h3>{post.user_info.user_name}</h3>
+          <span>{post.insert_dt}</span>
+        </Userdiv>
+        <Contentsdiv>
+          <span>{post.contents}</span>
+          <img src={post.image_url}></img>
+        </Contentsdiv>
+        <Socialdiv>
+          <span>좋아요 10개</span>
+          <span>댓글 {post.comment_cnt}개</span>
+        </Socialdiv>
+      </Container>
       <CommentInput post_id={id} />
       <Comments post_id={id} />
-    </Container>
+    </div>
   );
 };
-
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
   border-radius: 10px;
-  width: 90%;
+  width: 80%;
   margin: 20px auto;
-  div {
-    &:first-child {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid aliceblue;
-      img {
-        width: 50px;
-        border-radius: 9999px;
-      }
-    }
-    &:nth-child(2) {
-      display: flex;
-      flex-direction: column;
-      margin: 20px auto;
-      img {
-        margin: auto;
-        height: 350px;
-      }
-    }
+`;
+const Userdiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+  }
+`;
+const Contentsdiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  img {
+    width: 60%;
+    margin: 20px auto;
+  }
+`;
+const Socialdiv = styled.div`
+  display: flex;
+  span {
+    margin-left: 40px;
   }
 `;
 

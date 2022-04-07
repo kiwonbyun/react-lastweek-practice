@@ -10,6 +10,7 @@ import { actionCreators2 } from "./image";
 const SET_POST = "Setpost";
 const ADD_POST = "Addpost";
 const EDIT_POST = "Editpost";
+const EDIT_COMMENT = "Editcomment";
 const LOADING = "Loading";
 //action creators
 const setPost = createAction(SET_POST, (post_list, paging) => ({
@@ -18,6 +19,10 @@ const setPost = createAction(SET_POST, (post_list, paging) => ({
 }));
 const addPost = createAction(ADD_POST, (post) => ({ post }));
 const editPost = createAction(EDIT_POST, (id, post) => ({ id, post }));
+const editComment = createAction(EDIT_COMMENT, (id, comment) => ({
+  id,
+  comment,
+}));
 const loading = createAction(LOADING, (is_loading) => ({ is_loading }));
 const initialState = {
   list: [],
@@ -215,6 +220,11 @@ export default handleActions(
           }
         }
       }),
+    [EDIT_COMMENT]: (state, action) =>
+      produce(state, (draft) => {
+        let idx = draft.list.findIndex((p) => p.id === action.payload.id);
+        draft.list[idx] = { ...draft.list[idx], ...action.payload.post };
+      }),
     [LOADING]: (state, action) =>
       produce(state, (draft) => {
         draft.is_loading = action.payload.is_loading;
@@ -231,6 +241,7 @@ const actionCreators = {
   editPost,
   editPostFB,
   getOnePostFB,
+  editComment,
 };
 
 export { actionCreators };

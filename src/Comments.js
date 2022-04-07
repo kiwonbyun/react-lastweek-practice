@@ -21,15 +21,15 @@ const Comments = (props) => {
       {comment_list[post_id].map((c) => {
         return (
           <Comment key={c.id}>
-            <div>
+            <Div>
               <img src="https://lh3.googleusercontent.com/a-/AOh14GiGczsi0j9r9PTTgzIwFUU4ACKOWm0-wofOYplHvg=s288-p-rw-no"></img>
-              <span>{c.user_name}</span>
+              <span style={{ marginRight: "30px" }}>{c.user_name}</span>
               <p>{c.contents}</p>
               <span>{c.insert_dt}</span>
-            </div>
-            <div>
+            </Div>
+            <Buttondiv>
               <button>삭제</button>
-            </div>
+            </Buttondiv>
           </Comment>
         );
       })}
@@ -40,28 +40,26 @@ const Container = styled.div`
   padding: 20px 0px;
 `;
 const Comment = styled.div`
+  background-color: aliceblue;
   display: flex;
-  width: 500px;
   align-items: center;
   justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+`;
+const Div = styled.div`
+  display: flex;
+  align-items: center;
   img {
     width: 40px;
     height: 40px;
     border-radius: 9999px;
-    margin-right: 5px;
+    margin-right: 10px;
   }
-  div {
-    &:first-child {
-      display: flex;
-      align-items: center;
-      p {
-        margin-right: 50px;
-      }
-    }
-  }
-  span {
-    margin-right: 30px;
+  p {
+    margin-right: 100px;
   }
 `;
-
+const Buttondiv = styled.div``;
 export default Comments;

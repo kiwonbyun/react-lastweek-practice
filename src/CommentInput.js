@@ -28,8 +28,9 @@ const CommentInput = (props) => {
   );
 };
 const Container = styled.div`
+  width: 80%;
   padding: 20px 0px;
-  margin: 20px 0px;
+  margin: 20px auto;
   border-top: 2px solid aliceblue;
   border-bottom: 2px solid aliceblue;
   input {
