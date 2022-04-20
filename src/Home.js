@@ -18,7 +18,6 @@ const Home = (props) => {
       dispatch(actionCreators.getPostFB());
     }
   }, []);
-  console.log(post_list);
   if (is_login) {
     return (
       <div>

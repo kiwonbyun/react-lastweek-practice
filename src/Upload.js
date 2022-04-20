@@ -21,6 +21,7 @@ const Upload = (props) => {
   const inputChange = () => {
     const reader = new FileReader();
     const file = fileInput.current.files[0];
+    console.log(file);
 
     reader.readAsDataURL(file);
     reader.onloadend = () => {
